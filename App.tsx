@@ -5,19 +5,24 @@
  * @format
  */
 
-import { NewAppScreen } from '@react-native/new-app-screen';
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import { StoreContext } from './src/stores/store-context';
+import { rootStore } from './src/stores/root-store';
+import { LoginScreen } from './src/screens/login';
+import { observer } from 'mobx-react';
 
-function App() {
+const App = observer(() => {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NewAppScreen templateFileName="App.tsx" />
-    </View>
+    <StoreContext.Provider value={rootStore}>
+      <View style={styles.container}>
+        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        <LoginScreen />
+      </View>
+    </StoreContext.Provider>
   );
-}
+});
 
 const styles = StyleSheet.create({
   container: {
