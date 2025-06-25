@@ -4,7 +4,7 @@ import { useStores } from '../../stores/store-context';
 import { User } from '../../model/user';
 
 export const LoginScreen = () => {
-  const userStore = useStores().userStore;
+  const sessionStore = useStores().sessionStore;
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleLogin = () => {
@@ -14,7 +14,7 @@ export const LoginScreen = () => {
       email: '',
       isActive: false,
     };
-    userStore.setUser(user);
+    sessionStore.setUser(user);
   };
   return (
     <View>

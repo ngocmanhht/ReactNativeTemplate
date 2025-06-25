@@ -1,3 +1,3 @@
 export enum AppScreensKey {
-  userStore = 'userStore',
+  sessionStore = 'sessionStore',
 }

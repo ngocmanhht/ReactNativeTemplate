@@ -1,3 +1,4 @@
 export enum AppStorageKey {
-  userStore = 'userStore',
+  sessionStore = 'sessionStore',
+  token = 'token',
 }

@@ -29,6 +29,14 @@ class AsyncStorageService {
       console.error(`Error removing item from AsyncStorage: ${error}`);
     }
   }
+
+  async removeMultipleItems(key: string[]): Promise<void> {
+    try {
+      await AsyncStorage.multiRemove(key);
+    } catch (error) {
+      console.error(`Error removing item from AsyncStorage: ${error}`);
+    }
+  }
 }
 
 export const asyncStorageService = new AsyncStorageService();
