@@ -4,7 +4,7 @@
  *
  * @format
  */
-
+import React from 'react';
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
 import { StoreContext } from './src/stores/store-context';
 import { rootStore } from './src/stores/root-store';

@@ -8,9 +8,7 @@ import axios, {
 import { StatusCode } from '../enums/status-code';
 import { rootStore } from '../stores/root-store';
 import { Token } from '../model/token';
-// import {API_URL} from '@env';
-
-const API_URL = 'https://api.example.com';
+import { API_URL } from '@env';
 
 class ApiClient {
   private instance: AxiosInstance;

@@ -1,7 +1,15 @@
 module.exports = {
   presets: ['module:@react-native/babel-preset'],
-  plugins: [['@babel/plugin-proposal-class-properties']],
-  assumptions: {
-    setPublicClassFields: false,
-  },
+  plugins: [
+    ['@babel/plugin-transform-class-properties', { loose: true }],
+    [
+      'module:react-native-dotenv',
+      {
+        moduleName: '@env',
+        path: '.env',
+        safe: true,
+        allowUndefined: false,
+      },
+    ],
+  ],
 };
