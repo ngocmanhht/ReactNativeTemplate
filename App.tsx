@@ -5,29 +5,28 @@
  * @format
  */
 import React from 'react';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import { StatusBar, useColorScheme } from 'react-native';
 import { StoreContext } from './src/stores/store-context';
 import { rootStore } from './src/stores/root-store';
-import { LoginScreen } from './src/screens/login';
 import { observer } from 'mobx-react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { RootNavigator } from './src/navigation/root-navigator';
+import { NavigationContainer } from '@react-navigation/native';
+import { navigationService } from './src/navigation/navigation-service';
 
 const App = observer(() => {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
     <StoreContext.Provider value={rootStore}>
-      <View style={styles.container}>
+      <GestureHandlerRootView>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <LoginScreen />
-      </View>
+        <NavigationContainer ref={navigationService.navigationRef}>
+          <RootNavigator />
+        </NavigationContainer>
+      </GestureHandlerRootView>
     </StoreContext.Provider>
   );
-});
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
 });
 
 export default App;

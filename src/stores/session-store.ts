@@ -2,38 +2,41 @@ import { makeAutoObservable, runInAction } from 'mobx';
 import { User } from '../model/user';
 import { RootStore } from './root-store';
 import { asyncStorageService } from '../services/async-storage';
-import { AppStorageKey } from '../enums/app-storage-key';
+import { AppStorageKey } from '../const/app-storage-key';
 import { Token } from '../model/token';
 
 /**
- * Manages the session state for the application, including the current user and access token.
+ * Manages the user session state, including user information and authentication token.
  *
  * The `SessionStore` is responsible for:
- * - Persisting and loading the user session and access token using an async storage service.
- * - Providing computed properties to check authentication status and retrieve the user ID.
- * - Reacting to changes in user or access token and updating persistent storage accordingly.
- * - Handling user logout and session cleanup.
+ * - Loading and persisting user and token data from/to async storage.
+ * - Providing actions to set user and token.
+ * - Exposing computed properties for authentication status and user ID.
+ * - Handling user logout and clearing session data.
  *
  * @remarks
- * This store is intended to be used with MobX for state management in a React Native application.
+ * This store uses MobX for state management and relies on an injected `RootStore` for root-level dependencies.
  *
  * @example
  * ```typescript
  * const sessionStore = new SessionStore(rootStore);
  * sessionStore.setUser(user);
+ * sessionStore.setToken(token);
  * if (sessionStore.isAuthenticated) {
  *   // User is logged in
  * }
- * await sessionStore.logout();
  * ```
  *
- * @property user - The currently authenticated user, or null if not authenticated.
- * @property token - The access token for the current session, or null if not available.
- * @property rootStore - Reference to the root store for accessing other stores.
- * @method setUser - Sets the current user.
- * @method logout - Logs out the current user and clears session data.
- * @getter isAuthenticated - Returns true if a user is authenticated.
- * @getter userId - Returns the ID of the authenticated user, or null if not authenticated.
+ * @property user - The current authenticated user, or `null` if not authenticated.
+ * @property token - The current authentication token, or `null` if not authenticated.
+ * @property rootStore - Reference to the root store.
+ *
+ * @method setUser - Sets the current user and persists it to storage.
+ * @method setToken - Sets the current token and persists it to storage.
+ * @method logout - Clears the user and token, and removes session data from storage.
+ *
+ * @getter isAuthenticated - Returns `true` if a user is authenticated, otherwise `false`.
+ * @getter userId - Returns the current user's ID, or `null` if not authenticated.
  */
 export class SessionStore {
   user: User | null = null;

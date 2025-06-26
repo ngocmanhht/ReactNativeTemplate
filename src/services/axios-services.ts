@@ -5,10 +5,12 @@ import axios, {
   AxiosHeaders,
   HeadersDefaults,
 } from 'axios';
-import { StatusCode } from '../enums/status-code';
+import { StatusCode } from '../const/status-code';
 import { rootStore } from '../stores/root-store';
 import { Token } from '../model/token';
 import { API_URL } from '@env';
+import { navigationService } from '../navigation/navigation-service';
+import { appScreens } from '../const/app-screens';
 
 class ApiClient {
   private instance: AxiosInstance;
@@ -36,6 +38,18 @@ class ApiClient {
     this.setupInterceptors();
   }
 
+  /**
+   * Processes the queue of promises created by the request interceptor when the request was delayed
+   * due to the token being refreshed.
+   *
+   * If the refresh token request failed, all promises in the queue are rejected with the error.
+   * If the refresh token request succeeded, all promises in the queue are resolved with the new
+   * access token.
+   *
+   * @param {unknown} error The error returned by the refresh token request, or `null` if the request
+   *                        was successful.
+   * @param {string | null} token The new access token, or `null` if the refresh token request failed.
+   */
   private processQueue(error: unknown, token: string | null) {
     this.failedQueue.forEach(prom => {
       if (error) {
@@ -47,6 +61,16 @@ class ApiClient {
     this.failedQueue = [];
   }
 
+  /**
+   * Set up request and response interceptors for the API client.
+   * The request interceptor logs the request and adds the access token to the request headers.
+   * The response interceptor logs the response, returns the response data, and handles errors.
+   * If the response status is 401 (Unauthorized), the interceptor attempts to refresh the access token.
+   * If the refresh token is invalid or not provided, the interceptor logs out the user and redirects them to the login screen.
+   * If the refresh token is valid, the interceptor updates the access token and retries the original request.
+   * If the response status is 422 (Failed validation), the interceptor returns the first validation error message.
+   * If the response status is 500 (Internal Server Error) or any other unexpected status, the interceptor returns a generic error message.
+   */
   private setupInterceptors() {
     this.instance.interceptors.request.use(
       async (config: InternalAxiosRequestConfig) => {
@@ -97,6 +121,7 @@ class ApiClient {
           try {
             const refreshToken = rootStore.sessionStore.token?.refreshToken;
             if (!refreshToken) {
+              navigationService.reset(appScreens.Authentication);
               await rootStore.sessionStore.logout();
               return Promise.reject(new Error('No refresh token'));
             }
@@ -115,7 +140,7 @@ class ApiClient {
             return this.instance(originalRequest);
           } catch (refreshError) {
             this.processQueue(refreshError, null);
-            // ✅ TODO: Logout user when refresh token fails
+            navigationService.reset(appScreens.Authentication);
             rootStore.sessionStore.logout();
             return Promise.reject(refreshError);
           } finally {
