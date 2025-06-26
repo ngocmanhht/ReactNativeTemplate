@@ -1,4 +1,5 @@
 import { SessionStore } from './session-store';
+import { UIStore } from './ui-store';
 
 /**
  * The RootStore class serves as the central store for the application's state management.
@@ -20,8 +21,10 @@ import { SessionStore } from './session-store';
  */
 export class RootStore {
   sessionStore: SessionStore;
+  uiStore: UIStore;
   constructor() {
     this.sessionStore = new SessionStore(this);
+    this.uiStore = new UIStore(this);
   }
 }
 export const rootStore = new RootStore();

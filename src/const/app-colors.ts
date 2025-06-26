@@ -1,1 +1,3 @@
-export const appColors = {};
+export const appColors = {
+  primary: '#FF8C00',
+};
