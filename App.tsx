@@ -13,6 +13,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { RootNavigator } from './src/navigation/root-navigator';
 import { NavigationContainer } from '@react-navigation/native';
 import { navigationService } from './src/navigation/navigation-service';
+import AppLoadingIndicator from './src/components/app-loading-indicator';
 
 const App = observer(() => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -24,6 +25,7 @@ const App = observer(() => {
         <NavigationContainer ref={navigationService.navigationRef}>
           <RootNavigator />
         </NavigationContainer>
+        <AppLoadingIndicator />
       </GestureHandlerRootView>
     </StoreContext.Provider>
   );
