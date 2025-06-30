@@ -95,29 +95,81 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
-# 🧭 Navigation
-| Package                            | Purpose                                             |
-| ---------------------------------- | --------------------------------------------------- |
-| **@react-navigation/native**       | Core navigation library for managing app navigation |
-| **@react-navigation/bottom-tabs**  | Bottom tab navigator component                      |
-| **@react-navigation/stack**        | Stack navigator component                           |
-| **react-native-screens**           | Improves navigation performance with native screens |
-| **react-native-safe-area-context** | Handles safe area insets (e.g., notches)            |
-| **react-native-gesture-handler**   | Provides gesture handling capabilities              |
-# 🗂 State Management
-| Package        | Purpose                                    |
-| -------------- | ------------------------------------------ |
-| **mobx**       | State management using observable patterns |
-| **mobx-react** | Connects MobX state to React components    |
-# 📋 Form Validation
-| Package                 | Purpose                                                     |
-| ----------------------- | ----------------------------------------------------------- |
-| **react-hook-form**     | Manage form state easily and efficiently                    |
-| **@hookform/resolvers** | Integrates schema validation libraries with react-hook-form |
-| **yup**                 | Schema validation library for forms and objects             |
-# 💾 Local Storage
-**@react-native-async-storage/async-storage** 
-# 🔑 Environment Variables
-| Package                 | Purpose                                      |
-| ----------------------- | -------------------------------------------- |
-| **react-native-dotenv** | Load environment variables from `.env` files |
+
+
+# 📱 AwesomeProject
+
+A React Native app with modern libraries for state management, navigation, API handling, and form validation.
+
+---
+
+## ✨ Libraries and Their Purposes
+
+### ⚛️ Core
+- **react** – Core React library.
+- **react-native** – React Native framework for building native apps.
+
+---
+
+### 🧭 Navigation
+- **@react-navigation/native** – Routing and navigation for React Native apps.
+- **@react-navigation/stack** – Stack navigator for screen transitions.
+- **@react-navigation/bottom-tabs** – Bottom tab navigation.
+- **@react-native-screens** – Native screen management for performance.
+- **@react-native-safe-area-context** – Handling safe area insets.
+- **@react-native-masked-view/masked-view** – Masking views for transitions.
+
+---
+
+### 📡 Data Fetching
+- **axios** – Promise-based HTTP client for making API requests.
+- **@tanstack/react-query** – Powerful data fetching, caching, and state management.
+
+---
+
+### 🧠 State Management
+- **mobx** – Simple and scalable state management.
+- **mobx-react** – React bindings for MobX.
+
+---
+
+### ✅ Forms & Validation
+- **react-hook-form** – Performant form state and validation management.
+- **yup** – Schema-based validation.
+- **@hookform/resolvers** – Connect Yup to react-hook-form.
+
+---
+### 🔑 Environment Variables
+- **react-native-dotenv** - Load environment variables from `.env` files
+### ⚙️ Utilities
+- **@react-native-async-storage/async-storage** – Persistent key-value storage.
+
+---
+
+### 🛠 Development & Tooling
+- **@babel/** – Babel presets and plugins for transpiling modern JavaScript.
+- **@react-native-community/cli** – CLI tools for React Native.
+- **eslint** – Code linting.
+- **prettier** – Code formatting.
+- **typescript** – Type-safe JavaScript.
+- **react-native-dotenv** – Environment variable management.
+- **jest** – JavaScript testing framework.
+- **react-test-renderer** – Render React trees for testing.
+
+---
+
+## 🚀 Scripts
+
+| Command                | Description                          |
+|------------------------|--------------------------------------|
+| `yarn android`      | Run the Android app                  |
+| `yarn ios`          | Run the iOS app                      |
+| `yarn start`        | Start Metro bundler                  |
+| `npm run lint`         | Run ESLint for code linting          |
+| `npm run test`         | Run Jest tests                       |
+
+---
+
+## 📚 Requirements
+- Node.js >= 18
+- npm or yarn
