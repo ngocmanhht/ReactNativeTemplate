@@ -95,3 +95,29 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+# 🧭 Navigation
+| Package                            | Purpose                                             |
+| ---------------------------------- | --------------------------------------------------- |
+| **@react-navigation/native**       | Core navigation library for managing app navigation |
+| **@react-navigation/bottom-tabs**  | Bottom tab navigator component                      |
+| **@react-navigation/stack**        | Stack navigator component                           |
+| **react-native-screens**           | Improves navigation performance with native screens |
+| **react-native-safe-area-context** | Handles safe area insets (e.g., notches)            |
+| **react-native-gesture-handler**   | Provides gesture handling capabilities              |
+# 🗂 State Management
+| Package        | Purpose                                    |
+| -------------- | ------------------------------------------ |
+| **mobx**       | State management using observable patterns |
+| **mobx-react** | Connects MobX state to React components    |
+📋 Form Validation
+| Package                 | Purpose                                                     |
+| ----------------------- | ----------------------------------------------------------- |
+| **react-hook-form**     | Manage form state easily and efficiently                    |
+| **@hookform/resolvers** | Integrates schema validation libraries with react-hook-form |
+| **yup**                 | Schema validation library for forms and objects             |
+💾 Local Storage
+**@react-native-async-storage/async-storage** 
+🔑 Environment Variables
+| Package                 | Purpose                                      |
+| ----------------------- | -------------------------------------------- |
+| **react-native-dotenv** | Load environment variables from `.env` files |
