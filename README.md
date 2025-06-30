@@ -109,15 +109,15 @@ To learn more about React Native, take a look at the following resources:
 | -------------- | ------------------------------------------ |
 | **mobx**       | State management using observable patterns |
 | **mobx-react** | Connects MobX state to React components    |
-📋 Form Validation
+# 📋 Form Validation
 | Package                 | Purpose                                                     |
 | ----------------------- | ----------------------------------------------------------- |
 | **react-hook-form**     | Manage form state easily and efficiently                    |
 | **@hookform/resolvers** | Integrates schema validation libraries with react-hook-form |
 | **yup**                 | Schema validation library for forms and objects             |
-💾 Local Storage
+# 💾 Local Storage
 **@react-native-async-storage/async-storage** 
-🔑 Environment Variables
+# 🔑 Environment Variables
 | Package                 | Purpose                                      |
 | ----------------------- | -------------------------------------------- |
 | **react-native-dotenv** | Load environment variables from `.env` files |
