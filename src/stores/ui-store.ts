@@ -10,7 +10,7 @@ export class UIStore {
     this.rootStore = rootStore;
   }
 
-  set setIsLoading(value: boolean) {
+  setIsLoading(value: boolean) {
     this.isLoading = value;
   }
 }
