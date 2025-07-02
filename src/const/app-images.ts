@@ -1,1 +1,1 @@
-export const appImages = {};
+export const appImages = {} as const;
